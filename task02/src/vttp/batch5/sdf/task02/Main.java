@@ -15,13 +15,13 @@ public class Main {
 		}
 
 		String filePath = args[0];
-		System.out.println("Processing: " + filePath);
 
 		FileReader fr = new FileReader(filePath);
 		BufferedReader br = new BufferedReader(fr);
 
 		String line;
 
+		System.out.println("Processing: " + filePath);
 		while ((line = br.readLine()) != null) {
 
 			System.out.println(line); // print board from TTT
