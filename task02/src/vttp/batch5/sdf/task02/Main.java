@@ -7,13 +7,7 @@ import java.util.Arrays;
 
 public class Main {
 
-
 	public static void main(String[] args) throws IOException {
-
-		// initializing board to contain max of 9 characters
-		board = new char[9];
-		// fill up board with EMPTY first
-		Arrays.fill(board, EMPTY);
 
 		if (args.length != 1) {
 			System.out.println("Please Provide File to read to begin GOL");
@@ -31,25 +25,25 @@ public class Main {
 		while ((line = br.readLine()) != null) {
 
 			System.out.println(line); // print board from TTT
-		
+
 		}
 		br.close();
 
 	}
 
 	private char[] board;
-    private final char EMPTY = ' ';
-    private final char PLAYER = 'X';
-    private final char AI = 'O';
+	private final char EMPTY = ' ';
+	private final char PLAYER = 'X';
+	private final char AI = 'O';
 
-    public Main() {
-        // initializing board to contain max of 9 characters
-        board = new char[9];
-        // fill up board with EMPTY first
-        Arrays.fill(board, EMPTY);
-    }
+	public Main() {
+		// initializing board to contain max of 9 characters
+		board = new char[9];
+		// fill up board with EMPTY first
+		Arrays.fill(board, EMPTY);
+	}
 
-	private boolean checkWin(char player) {
+	private boolean checkWin(char player) { // check for win in rows, cols and diagonally
 		// 2D array win conditions
 		int[][] winConditions = {
 				{ 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 },
@@ -65,7 +59,7 @@ public class Main {
 		return false;
 	}
 
-	private boolean hasEmptyCell() {
+	private boolean hasEmptyCell() { // check if the square is empty
 		for (char cell : board) {
 			if (cell == EMPTY) {
 				return true;
@@ -74,12 +68,12 @@ public class Main {
 		return false;
 	}
 
-	public int utility(){
-		if (checkWin(PLAYER))
-            return 1;
-        if (checkWin(AI))
-            return -1;
-        return 0;
+	public int Utility() {
+		if (checkWin(PLAYER)) // if move allows player to win, utility = 1
+			return 1;
+		if (checkWin(AI)) // if move causes player to lose, utility = -1
+			return -1;
+		return 0; // if draw, utility = 0
 	}
 
 }
